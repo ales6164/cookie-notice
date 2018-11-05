@@ -71,6 +71,60 @@
 </div>
 <script src="https://unpkg.com/material-components-web@0.40.1/dist/material-components-web.min.js"></script>
 <script>
+    function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
+
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
+    // todo: get toggles cookies and turn on/off toggles based on value
+    const toggles = {
+        /*'.a1': v => {
+            console.log("a1", v)
+        },*/
+        '.a2': v => {
+            console.log("a2", v);
+
+            // todo: update cookie
+        },
+    };
+    for (let sel in toggles) {
+        if (toggles.hasOwnProperty(sel)) {
+            const el = document.querySelector(sel);
+            const sw = new mdc.switchControl.MDCSwitch(el);
+            el.addEventListener('change', ((s, fun, sel) => {
+                return () => {
+                    fun(s.checked);
+                    setCookie("cookieNotice_toggle" + sel, s.checked ? 'true' : 'false')
+                }
+            })(sw, toggles[sel], sel));
+
+            // get cookie and set toggle
+            const cookieVal = getCookie("cookieNotice_toggle" + sel);
+            sw.checked = cookieVal !== 'false';
+        }
+    }
+
+    // todo: get cookie cookieNoticeViewed and check if notice's been seen
+
+    // todo: if seen, don't show cookie notice
+    // todo: else show and set cookieNoticeViewed cookie
+
     document.querySelectorAll('.js-cookie-notice__toggle').forEach(el => {
         el.addEventListener('click', e => {
             e.preventDefault();
@@ -83,25 +137,7 @@
             document.querySelector('.js-cookie-notice__2').classList.toggle('cookie-notice__container__box--hidden')
         })
     });
-    const toggles = {
-        '.a1': v => {
-            console.log("a1", v)
-        },
-        '.a2': v => {
-            console.log("a2", v)
-        },
-    };
-    for (let sel in toggles) {
-        if (toggles.hasOwnProperty(sel)) {
-            const el = document.querySelector(sel);
-            const sw = new mdc.switchControl.MDCSwitch(el);
-            el.addEventListener('change', ((s, fun) => {
-                return () => {
-                    fun(s.checked)
-                }
-            })(sw, toggles[sel]))
-        }
-    }
+
 </script>
 <script src="/reload/reload.js"></script>
 </body>

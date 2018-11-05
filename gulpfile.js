@@ -8,7 +8,6 @@ const reload = require('reload');
 
 const $ = gulpLoadPlugins();
 const app = express();
-const publicDir = path.join(__dirname, 'src');
 
 const reloadServer = reload(app);
 
