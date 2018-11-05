@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cookie Notice Example</title>
+    <link href="cookie-notice.css" rel="stylesheet"
+          type="text/css">
+    <link href="https://unpkg.com/material-components-web@0.40.1/dist/material-components-web.min.css" rel="stylesheet"
+          type="text/css">
+</head>
+<body>
+
+<div class="cookie-notice">
+    <div class="cookie-notice__container cookie-notice__container--transparent">
+        <div class="cookie-notice__container__box">
+            <div class="cookie-notice__toggle js-cookie-notice__toggle" title="Toggle"></div>
+        </div>
+    </div>
+
+    <div class="cookie-notice__container js-cookie-notice__1">
+        <div class="cookie-notice__container__box">
+            <div class="cookie-notice__content cookie-notice__content--info-ico">
+                <div class="i">
+                    <span class="cookie-notice__title">Piškotki</span>
+                    <p>
+                        Ta stran uporablja piškotke z namenom zagotavljanja spletne storitve in za analizo uporabe.
+                        S klikom na gumb "V redu" ali katero koli drugo povezavo zunaj tega sporočila, soglašate z
+                        njihovo namestitvijo. Za več informacij si oglejte
+                        povezavo
+                        <a href="/zasebnost" title="Politika zasebnosti">več o piškotkih</a>.
+                    </p>
+                </div>
+                <button class="d js-cookie-notice__toggle" title="Strinjam se">V redu</button>
+                <button class="g js-cookie-notice__settings" title="Nastavitve"></button>
+            </div>
+        </div>
+        <div class="cookie-notice__container__box <!--cookie-notice__container__box--hidden--> js-cookie-notice__2">
+            <div class="cookie-notice__content">
+                <div class="i">
+                    <span class="cookie-notice__title">Upravljaj s piškotki</span>
+                    <div class="e">
+                        <div class="w">
+                            <label for="basic-switch">Primarni piškotki</label>
+                            <div class="mdc-switch a1">
+                                <div class="mdc-switch__track"></div>
+                                <div class="mdc-switch__thumb-underlay">
+                                    <div class="mdc-switch__thumb">
+                                        <input type="checkbox" id="basic-switch" class="mdc-switch__native-control"
+                                               role="switch" checked disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w">
+                            <label for="basic-switch">Google Analitika</label>
+                            <div class="mdc-switch a2">
+                                <div class="mdc-switch__track"></div>
+                                <div class="mdc-switch__thumb-underlay">
+                                    <div class="mdc-switch__thumb">
+                                        <input type="checkbox" id="basic-switch" class="mdc-switch__native-control"
+                                               role="switch" checked>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://unpkg.com/material-components-web@0.40.1/dist/material-components-web.min.js"></script>
+<script>
+    document.querySelectorAll('.js-cookie-notice__toggle').forEach(el => {
+        el.addEventListener('click', e => {
+            e.preventDefault();
+            document.querySelector('.js-cookie-notice__1').classList.toggle('cookie-notice__container--hidden')
+        })
+    });
+    document.querySelectorAll('.js-cookie-notice__settings').forEach(el => {
+        el.addEventListener('click', e => {
+            e.preventDefault();
+            document.querySelector('.js-cookie-notice__2').classList.toggle('cookie-notice__container__box--hidden')
+        })
+    });
+    const toggles = {
+        '.a1': v => {
+            console.log("a1", v)
+        },
+        '.a2': v => {
+            console.log("a2", v)
+        },
+    };
+    for (let sel in toggles) {
+        if (toggles.hasOwnProperty(sel)) {
+            const el = document.querySelector(sel);
+            const sw = new mdc.switchControl.MDCSwitch(el);
+            el.addEventListener('change', ((s, fun) => {
+                return () => {
+                    fun(s.checked)
+                }
+            })(sw, toggles[sel]))
+        }
+    }
+</script>
+<script src="/reload/reload.js"></script>
+</body>
+</html>

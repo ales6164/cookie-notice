@@ -1,0 +1,34 @@
+{
+  "name": "cookie-notice",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ales6164/gic-gradnje.git"
+  },
+  "author": "Aleš Kovačič",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ales6164/gic-gradnje/issues"
+  },
+  "homepage": "https://github.com/ales6164/gic-gradnje#readme",
+  "devDependencies": {
+    "express": "^4.16.3",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-if": "^2.0.2",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-newer": "^1.2.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-size": "^3.0.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0",
+    "gulp-useref": "^3.1.0",
+    "reload": "^2.2.2"
+  }
+}
