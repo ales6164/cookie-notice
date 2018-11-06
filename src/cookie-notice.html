@@ -1,0 +1,328 @@
+<template id="cookie-notice">
+    <link href="https://unpkg.com/material-components-web@0.40.1/dist/material-components-web.min.css" rel="stylesheet"
+          type="text/css">
+    <style>
+        .cookie-notice {
+            --font: 400 15px/120% "Lato", Arial, Helvetica, sans-serif;
+            --color: #fff;
+            --background-color: #00a3e0;
+            --max-width: 1200px;
+            display: block
+        }
+
+        .cookie-notice * {
+            z-index: 1
+        }
+
+        .cookie-notice__container {
+            display: block;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 0 8px;
+            background: var(--background-color) none no-repeat left 15px center;
+            min-height: 48px;
+            overflow-y: hidden;
+            transition: transform .3s ease
+        }
+
+        .cookie-notice__container__box {
+            width: 100%;
+            display: block;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            max-height: 500px
+        }
+
+        .cookie-notice__container__box--hidden {
+            max-height: 0
+        }
+
+        .cookie-notice__container--transparent {
+            background-color: transparent;
+            border: none
+        }
+
+        .cookie-notice__container--hidden {
+            transform: translateY(100%)
+        }
+
+        .cookie-notice__toggle {
+            display: block;
+            background: var(--background-color);
+            cursor: pointer;
+            border: none
+        }
+
+        .cookie-notice__toggle--lock {
+            width: 48px;
+            height: 48px;
+            margin: 0;
+            background: var(--background-color) url(https://storage.googleapis.com/varanox-client.appspot.com/lock.png) no-repeat 50%
+        }
+
+        .cookie-notice__toggle--ok {
+            padding: 0 12px;
+            background-color: rgba(0, 0, 0, .5);
+            color: var(--color);
+            text-transform: uppercase;
+            transition: all 125ms ease-in-out;
+            font-size: 12px;
+            border-radius: 3px;
+            font-weight: 700;
+            white-space: nowrap;
+            line-height: 28px
+        }
+
+        .cookie-notice__content {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            text-align: left;
+            padding: 0 15px 0 60px;
+            --mdc-theme-secondary: var(--color)
+        }
+
+        .cookie-notice__content--info-ico {
+            background: transparent url(https://storage.googleapis.com/varanox-client.appspot.com/info.png) no-repeat left 0 center
+        }
+
+        .cookie-notice__content__info {
+            display: block;
+            padding: 12px 0;
+            width: 100%;
+            outline: none;
+            cursor: default
+        }
+
+        .cookie-notice__settings {
+            display: block;
+            margin-left: 16px;
+            min-width: 32px;
+            min-height: 32px;
+            border: none;
+            background: transparent url(https://storage.googleapis.com/varanox-client.appspot.com/settings.png) no-repeat left 0 center
+        }
+
+        .cookie-notice__title {
+            color: var(--color);
+            font: var(--font);
+            font-weight: 700 !important
+        }
+
+        .cookie-notice p {
+            margin: 0;
+            width: 90%
+        }
+
+        .cookie-notice a, .cookie-notice label, .cookie-notice p {
+            color: var(--color);
+            font: var(--font)
+        }
+
+        .cookie-notice a {
+            text-decoration: none;
+            padding-bottom: 0;
+            border-bottom: 1px solid var(--color);
+            transition: all .25s ease-in-out
+        }
+
+        .cookie-notice a:focus, .cookie-notice a:hover {
+            cursor: pointer;
+            opacity: .75
+        }
+
+        .cookie-notice__switches {
+            min-width: 100%;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            margin: 0 -8px
+        }
+
+        .cookie-notice__switches, .cookie-notice__switches__switch {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-pack: justify;
+            justify-content: space-between
+        }
+
+        .cookie-notice__switches__switch {
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            -ms-flex-negative: 1;
+            flex-shrink: 1;
+            padding: 12px;
+            border: 1px solid var(--color);
+            -ms-flex-align: center;
+            align-items: center;
+            margin: 8px 8px 0
+        }
+
+        .cookie-notice__switches__switch label {
+            color: var(--color);
+            margin-right: 8px
+        }
+    </style>
+    <div class="cookie-notice">
+        <div class="cookie-notice__container cookie-notice__container--transparent">
+            <div class="cookie-notice__container__box">
+                <div class="cookie-notice__toggle cookie-notice__toggle--lock" title="Zasebnost"></div>
+            </div>
+        </div>
+
+        <div class="cookie-notice__container js-cookie-notice__1 cookie-notice__container--hidden">
+            <div class="cookie-notice__container__box">
+                <div class="cookie-notice__content cookie-notice__content--info-ico">
+                    <div class="cookie-notice__content__info">
+                        <span class="cookie-notice__title">Piškotki</span>
+                        <p>
+                            Ta stran uporablja piškotke z namenom zagotavljanja spletne storitve in za analizo uporabe.
+                            S klikom na gumb "V redu" ali katero koli drugo povezavo zunaj tega sporočila, soglašate z
+                            njihovo namestitvijo. Za več informacij si oglejte
+                            povezavo
+                            <a href="/zasebnost" title="Politika zasebnosti">več o piškotkih</a>.
+                        </p>
+                    </div>
+                    <button class="cookie-notice__toggle cookie-notice__toggle--ok">V redu</button>
+                    <button class="cookie-notice__settings" title="Nastavitve"></button>
+                </div>
+            </div>
+            <div class="cookie-notice__container__box <!--cookie-notice__container__box--hidden--> js-cookie-notice__2">
+                <div class="cookie-notice__content">
+                    <div class="cookie-notice__content__info">
+                        <span class="cookie-notice__title">Upravljaj s piškotki</span>
+                        <div class="cookie-notice__switches">
+                            <div class="cookie-notice__switches__switch">
+                                <label for="switch-a1">Primarni piškotki</label>
+                                <div class="mdc-switch a1">
+                                    <div class="mdc-switch__track"></div>
+                                    <div class="mdc-switch__thumb-underlay">
+                                        <div class="mdc-switch__thumb">
+                                            <input type="checkbox" id="switch-a1" class="mdc-switch__native-control"
+                                                   role="switch" checked disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cookie-notice__switches__switch">
+                                <label for="switch-a2">Google Analitika</label>
+                                <div class="mdc-switch a2">
+                                    <div class="mdc-switch__track"></div>
+                                    <div class="mdc-switch__thumb-underlay">
+                                        <div class="mdc-switch__thumb">
+                                            <input type="checkbox" id="switch-a2" class="mdc-switch__native-control"
+                                                   role="switch" checked>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    customElements.define('cookie-notice', class extends HTMLElement {
+        constructor() {
+            super();
+
+            let tmpl = document.currentScript.ownerDocument.querySelector('#cookie-notice');
+
+            let cb = () => {
+                this.appendChild(tmpl.content.cloneNode(true));
+
+                const cookieNoticeSeen = "cn_seen";
+                const cookieNoticeDisabled = "cn_disabled";
+                const gaProperty = 'UA-107416896-5';
+
+                // Disable tracking if the opt-out cookie exists.
+                const disableStr = 'ga-disable-' + gaProperty;
+                if (document.cookie.indexOf(disableStr + '=true') > -1) {
+                    window[disableStr] = true;
+                }
+
+                // todo: get toggles cookies and turn on/off toggles based on value
+                const toggles = {
+                    '.a1': v => {
+                        console.log("a1", v)
+                    },
+                    '.a2': v => {
+                        console.log("a2", v);
+                        if (!v) {
+                            // Opt-out function
+                            document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+                            window[disableStr] = true;
+                        } else {
+                            // Opt-in function
+                            document.cookie = disableStr + '=false; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+                            window[disableStr] = false;
+                        }
+                    },
+                };
+                for (let sel in toggles) {
+                    if (toggles.hasOwnProperty(sel)) {
+                        const el = document.querySelector(sel);
+                        const sw = new mdc.switchControl.MDCSwitch(el);
+                        el.addEventListener('change', ((s, fun, sel) => {
+                            return () => {
+                                fun(s.checked);
+                                document.cookie = cookieNoticeDisabled + sel + '=' + (s.checked ? 'false' : 'true') + '; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+                            }
+                        })(sw, toggles[sel], sel));
+
+                        // get cookie and set toggle
+                        const isDisabled = document.cookie.indexOf(cookieNoticeDisabled + sel + '=true') > -1;
+                        sw.checked = !isDisabled;
+                        toggles[sel](sw.checked)
+                    }
+                }
+
+                // get cookie cookieNoticeSeen and check if notice's been seen
+                if (document.cookie.indexOf(cookieNoticeSeen + '=true') === -1) {
+                    document.querySelector('.js-cookie-notice__1').classList.remove('cookie-notice__container--hidden');
+                    document.cookie = cookieNoticeSeen + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+                }
+
+                document.querySelectorAll('.cookie-notice__toggle').forEach(el => {
+                    el.addEventListener('click', e => {
+                        e.preventDefault();
+                        document.querySelector('.js-cookie-notice__1').classList.toggle('cookie-notice__container--hidden')
+                    })
+                });
+                document.querySelectorAll('.cookie-notice__settings').forEach(el => {
+                    el.addEventListener('click', e => {
+                        e.preventDefault();
+                        document.querySelector('.js-cookie-notice__2').classList.toggle('cookie-notice__container__box--hidden')
+                    })
+                });
+            };
+            let script = document.createElement("script");
+            script.type = 'text/javascript';
+            script.async = true;
+            script.src = 'https://unpkg.com/material-components-web@0.40.1/dist/material-components-web.min.js';
+            if (cb) {
+                if (script.readyState) {
+                    script.onreadystatechange = function () {
+                        if (script.readyState === "loaded" || script.readyState === "complete") {
+                            script.onreadystatechange = null;
+                            cb();
+                        }
+                    };
+                } else {
+                    script.onload = function () {
+                        cb();
+                    };
+                }
+            }
+            document.body.appendChild(script)
+        }
+    })
+</script>

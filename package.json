@@ -16,11 +16,13 @@
   },
   "homepage": "https://github.com/ales6164/gic-gradnje#readme",
   "devDependencies": {
+    "connect-livereload": "^0.6.0",
     "express": "^4.16.3",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-concat": "^2.6.0",
     "gulp-cssnano": "^2.1.2",
+    "gulp-express": "^0.3.5",
     "gulp-if": "^2.0.2",
     "gulp-load-plugins": "^1.2.4",
     "gulp-newer": "^1.2.0",
@@ -29,6 +31,8 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
     "gulp-useref": "^3.1.0",
+    "http": "0.0.0",
+    "nodemon": "^1.18.6",
     "reload": "^2.2.2"
   }
 }

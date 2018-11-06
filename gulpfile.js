@@ -1,24 +1,27 @@
 'use strict';
 
 const gulp = require('gulp');
-const path = require('path');
 const express = require('express');
+const http = require('http');
 const gulpLoadPlugins = require('gulp-load-plugins');
+const $ = gulpLoadPlugins();
 const reload = require('reload');
 
-const $ = gulpLoadPlugins();
 const app = express();
+app.set('port', 3000);
 
+const server = http.createServer(app);
 const reloadServer = reload(app);
 
 gulp.task('serve', ['styles'], () => {
-    const port = 3000;
-
     app.use(express.static('src'));
+    server.listen(app.get('port'), function () {
+        console.log('Web server listening on port ' + app.get('port'))
+    });
 
-    app.listen(port, () => console.log('app listening on port ' + port));
-    gulp.watch(['src/*.scss'], ['styles', reloadServer.reload]);
-    gulp.watch(['src/*.html'], [reloadServer.reload]);
+    gulp.watch(['src/*.scss'], ['styles']);
+    gulp.watch(['src/*.css'], reloadServer.reload);
+    gulp.watch(['src/*.html'], reloadServer.reload);
 });
 
 gulp.task('build', ['styles'], (done) => {
